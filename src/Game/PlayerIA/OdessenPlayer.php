@@ -22,19 +22,15 @@ class OdessenPlayer extends Player
             2 => parent::paperChoice(),
             3 => parent::scissorsChoice(),
             );*/
-        $rounds = $this->result->getNbRound();
-        for ($i = 0; $i <= $rounds; $i++) {
-            $choice = $this->result->getLastScoreFor($this->opponentSide);
+            $choice = $this->result->getLastChoiceFor($this->opponentSide);
             if ( $choice == parent::rockChoice()) {
-                return parent::scissorsChoice();
+               return parent::paperChoice();
             }
-            if ( $choice == parent::paperChoice()) {
-                return parent::rockChoice();
+            if ( $choice == parent::scissorsChoice()) {
+                return parent::scissorsChoice();
             }
             else {
                 return parent::paperChoice();
             }
-        }
-        return parent::rockChoice();
     }
 };
