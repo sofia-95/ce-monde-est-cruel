@@ -17,25 +17,36 @@ class OdessenPlayer extends Player
 
     public function getChoice()
     {
-        /**$array = array(
-            1 => parent::rockChoice(),
-            2 => parent::paperChoice(),
-            3 => parent::scissorsChoice(),
-            );*/
             $choice = $this->result->getStatsFor($this->opponentSide);
             $pap = $choice['paper']; 
             $sci = $choice['scissors'];
             $roc =  $choice['rock'];
 
             $m = max ($pap, $sci, $roc);
-            if ( $m == $pap) {
-               return parent::scissorsChoice();
+            $mi = min($pap, $sci, $roc);
+            if ( $m == $pap ) {
+                if ($mi == $sci) {
+                    return parent::scissorsChoice();
+                }
+                else {
+                    return parent::paperChoice();
+                }
             }
-            if ( $m == $sci) {
-                return parent::rockChoice();
+            if ( $m == $sci ) {
+                if ($mi == $roc) {
+                    return parent::rockChoice();
+                }
+                else {
+                    return parent::scissorsChoice();
+                }
             }
-            if ($m == $roc) {
-                return parent::paperChoice();
+            if ($m == $roc ) {
+                if ($mi == $pap){
+                    return parent::paperChoice();
+                }
+                else {
+                    return parent::rockChoice();
+                }
             }
     }
 };
