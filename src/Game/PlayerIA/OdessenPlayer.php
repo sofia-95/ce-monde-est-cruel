@@ -23,30 +23,14 @@ class OdessenPlayer extends Player
             $roc =  $choice['rock'];
 
             $m = max ($pap, $sci, $roc);
-            $mi = min($pap, $sci, $roc);
+            if ( $m == $roc ) {
+                return parent::paperChoice();
+            }
             if ( $m == $pap ) {
-                if ($mi == $sci) {
-                    return parent::scissorsChoice();
-                }
-                else {
-                    return parent::paperChoice();
-                }
+                return parent::scissorsChoice();
             }
-            if ( $m == $sci ) {
-                if ($mi == $roc) {
-                    return parent::rockChoice();
-                }
-                else {
-                    return parent::scissorsChoice();
-                }
-            }
-            if ($m == $roc ) {
-                if ($mi == $pap){
-                    return parent::paperChoice();
-                }
-                else {
-                    return parent::rockChoice();
-                }
+            if ($m == $sci ) {
+                return parent::rockChoice();
             }
     }
 };
